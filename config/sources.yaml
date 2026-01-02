@@ -1,0 +1,28 @@
+﻿# config/sources.yaml
+run:
+  user_agent: "gcc-policy-radar/1.0 (+contact-email)"
+  timeout_s: 30
+  max_retries: 3
+  rate_limit_per_domain_rps: 5
+  backoff_statuses: [429, 503]
+
+schedule:
+  day: "MONDAY"
+
+sources:
+  - source_id: "imf_reo_meca"
+    name: "IMF REO MECA"
+    series: "Regional Economic Outlook: Middle East and Central Asia"
+    index_url: "https://www.imf.org/en/publications/reo/meca"
+    mode: "html"
+    language: "en"
+    artifact: "full_report_pdf"
+
+  - source_id: "iea_gas_reports"
+    name: "IEA Natural Gas Reports"
+    series: "IEA Gas Reports (Natural Gas)"
+    index_url: "https://www.iea.org/analysis?type=report&energySystem%5B0%5D=natural-gas"
+    mode: "html"
+    language: "en"
+    artifact: "pdf"
+    skip_if_paywall: true
